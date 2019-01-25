@@ -19,9 +19,9 @@ public class Forklift extends Subsystem {
 		forkliftMech2 = new Spark(RobotMap.forklift_mech2);
 	}
 	
-	public void setPosition(double value) {
-		forkliftMech1.set(value);
-		forkliftMech2.set(value);
+	public void setSpeed(double speed) {
+		forkliftMech1.set(speed);
+		forkliftMech2.set(speed);
 	}
 
     // Put methods for controlling this subsystem

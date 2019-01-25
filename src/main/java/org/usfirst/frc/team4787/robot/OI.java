@@ -56,6 +56,7 @@ public class OI {
 	private Button cannonTrigger;
 	private boolean upTrigger;
     private boolean downTrigger;
+	private int povLocation; //What data type should this be?
 	
 	public OI() {
 		//JoystickButton rightNub = new JoystickButton(m_Joystick, 0);
@@ -87,6 +88,10 @@ public class OI {
 		return Math.pow(m_Joystick.getZ(), 1);
 	}
 	
+	public static boolean getPovWheel() {
+		return m_Joystick.getPOV()
+	}
+
 	public static boolean buttonDown(int button) {
 		return m_Joystick.getRawButton(button);
 	
