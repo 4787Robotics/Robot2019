@@ -25,7 +25,7 @@ public class DriveTrainGyro extends PIDSubsystem {
 	private Talon back_left;
 	private Talon front_right;
 	private Talon back_right;
-	private MecanumDrive motor_drive;
+	private TankDrive motor_drive;
 	//private AnalogGyro m_gyro;
 	private ADXRS450_Gyro m_gyro;
 	
@@ -38,7 +38,7 @@ public class DriveTrainGyro extends PIDSubsystem {
 		back_left = new Talon(RobotMap.motor_back_left);
 		front_right = new Talon(RobotMap.motor_front_right);
 		back_right = new Talon(RobotMap.motor_back_right);
-		motor_drive = new MecanumDrive(front_left, back_left, front_right, back_right);
+		motor_drive = new TankDrive(front_left, back_left, front_right, back_right);
 		/*m_gyro = new AnalogGyro(RobotMap.gyro);
 		
 		m_gyro.calibrate();*/
