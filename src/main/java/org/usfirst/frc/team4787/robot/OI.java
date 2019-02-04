@@ -89,7 +89,7 @@ public class OI {
 	}
 	
 	public static boolean getPovWheel() {
-		return m_Joystick.getPOV()
+		return m_Joystick.getPOV();
 	}
 
 	public static boolean buttonDown(int button) {
