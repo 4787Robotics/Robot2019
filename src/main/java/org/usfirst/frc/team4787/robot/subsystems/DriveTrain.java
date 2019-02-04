@@ -19,21 +19,26 @@ public class DriveTrain extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private Talon front_left;
-	private Talon back_left;
-	private Talon front_right;
-	private Talon back_right;
-	private TankDrive motor_drive;
+	private Spark front_left;
+	private Spark back_left;
+	private Spark front_right;
+	private Spark back_right;
+  private SpeedControllerGroup m_left;
+  private SpeedControllerGroup m_right;
+	private DifferentialDrive motor_drive;
 	
 	public DriveTrain() {
 		//sets the pid values, might need feed forward
 		
 		
-		front_left = new Talon(RobotMap.motor_front_left);
-		back_left = new Talon(RobotMap.motor_back_left);
-		front_right = new Talon(RobotMap.motor_front_right);
-		back_right = new Talon(RobotMap.motor_back_right);
-		motor_drive = new TankDrive(front_left, back_left, front_right, back_right);
+		front_left = new Spark(RobotMap.motor_front_left);
+		back_left = new Spark(RobotMap.motor_back_left);
+		front_right = new Spark(RobotMap.motor_front_right);
+		back_right = new Spark(RobotMap.motor_back_right);
+    m_left = new SpeedControllerGroup(front_left, back_left);
+    m_right = new SpeedControllerGroup(front_right, back_right);
+    
+    motor_drive = new DifferentialDrive(m_left, m_right);
 		/*m_gyro = new AnalogGyro(RobotMap.gyro);
 		
 		m_gyro.calibrate();*/
@@ -46,15 +51,19 @@ public class DriveTrain extends Subsystem {
     	motor_drive.stopMotor();
     }
     
-    public void drive(double xSpeed, double ySpeed, double zRotation) {	
+    /*public void drive(double xSpeed, double ySpeed, double zRotation) {	
     	motor_drive.driveCartesian(xSpeed, ySpeed, zRotation);
+    }*/
+    
+    public void drive(double left, double right) {
+      motor_drive.tankDrive(left, right)
+    }
+
+    public void drive(Joystick joy) {
+    	//fix to swap to lspeed and rspeed
+      this.drive(-joy.getY(), -joy.getThrottle());
     }
     
-    //public void drive(Joystick joy) {
-    //	this.drive(-joy.getY(), -joy.getThrottle());
-    //}
-    
 
-    ///umm this would not work??? 
 }
 
