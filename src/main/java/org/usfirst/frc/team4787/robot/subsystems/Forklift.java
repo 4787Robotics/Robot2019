@@ -10,18 +10,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Forklift extends Subsystem {
 	
-	private Spark forkliftMech1;
-	private Spark forkliftMech2;
+	private Spark forklift_motor;
 	
 	public Forklift() {
 		
-		forkliftMech1 = new Spark(RobotMap.forklift_mech1);
-		forkliftMech2 = new Spark(RobotMap.forklift_mech2);
+		forklift_motor = new Spark(RobotMap.forklift_pin);
 	}
 	
 	public void setSpeed(double speed) {
-		forkliftMech1.set(speed);
-		forkliftMech2.set(speed);
+		forklift_motor.set(speed);
 	}
 
     // Put methods for controlling this subsystem

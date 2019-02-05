@@ -7,13 +7,9 @@
 
 package org.usfirst.frc.team4787.robot;
 
-import org.usfirst.frc.team4787.robot.commands.DriveTrainWithJoystick;
-import org.usfirst.frc.team4787.robot.subsystems.Cannon;
 import org.usfirst.frc.team4787.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4787.robot.subsystems.DriveTrainGyro;
-import org.usfirst.frc.team4787.robot.subsystems.Flywheel;
 import org.usfirst.frc.team4787.robot.subsystems.Forklift;
-import org.usfirst.frc.team4787.robot.subsystems.SolenoidSubsystem;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -33,11 +29,8 @@ public class Robot extends TimedRobot {
 	private String m_autoSelected;
 	private SendableChooser<String> m_chooser = new SendableChooser<>();
 	public static DriveTrain m_driveTrain;
-	public static Flywheel m_flywheel;
 	public static Forklift m_forklift;
 	public static OI m_OI;
-	public static DriveTrainWithJoystick m_joystickControl;
-	public static Cannon m_Cannon = new Cannon();
 	public static boolean isRunning = false;
   /**
 	 * This function is run when the robot is first started up and should be
@@ -46,8 +39,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_driveTrain = new DriveTrain();
+		m_forklift = new Forklift();
 		m_OI = new OI();
-		m_joystickControl = new DriveTrainWithJoystick();
 		//m_Cannon = new Cannon();
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
@@ -96,37 +89,6 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		//m_driveTrain.drive(-OI.getRx(),OI.getRy(),OI.getRz());
 		m_driveTrain.drive(OI.getJoystick());
-
-		if(OI.buttonDown(1) && !isRunning) {
-			Thread fireThread = new Thread() {
-				public void run() {
-					try {
-						m_Cannon.set(1);
-						Thread.sleep(75);
-						m_Cannon.set(0);
-						Thread.sleep(150);
-						m_Cannon.set(-1);
-						Thread.sleep(75);
-						m_Cannon.set(0);
-						Thread.sleep(2000);
-						isRunning = false;
-					}
-					catch(InterruptedException v) {
-						System.out.print(v);
-					}
-				}
-			};
-			isRunning = true;
-			fireThread.start();
-		}
-		
-		m_Cannon.rotate(0);
-		if(OI.buttonDown(2)) {
-			m_Cannon.rotate(0.25);
-		}
-		if(OI.buttonDown(3)) {
-			m_Cannon.rotate(-0.25);
-		}
 	}
 
 	/**
