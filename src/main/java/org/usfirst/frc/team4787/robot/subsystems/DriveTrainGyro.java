@@ -25,7 +25,7 @@ public class DriveTrainGyro extends PIDSubsystem {
 	private Talon back_left;
 	private Talon front_right;
 	private Talon back_right;
-	private TankDrive motor_drive;
+
 	//private AnalogGyro m_gyro;
 	private ADXRS450_Gyro m_gyro;
 	
@@ -38,7 +38,7 @@ public class DriveTrainGyro extends PIDSubsystem {
 		back_left = new Talon(RobotMap.motor_back_left);
 		front_right = new Talon(RobotMap.motor_front_right);
 		back_right = new Talon(RobotMap.motor_back_right);
-		motor_drive = new TankDrive(front_left, back_left, front_right, back_right);
+		//motor_drive = new TankDrive(front_left, back_left, front_right, back_right);
 		/*m_gyro = new AnalogGyro(RobotMap.gyro);
 		
 		m_gyro.calibrate();*/
@@ -55,11 +55,11 @@ public class DriveTrainGyro extends PIDSubsystem {
 	}
 	
     public void stopMotors() {
-    	motor_drive.stopMotor();
+    	//motor_drive.stopMotor();
     }
     
     public void drive(double xSpeed, double ySpeed, double zRotation) {	
-    	motor_drive.driveCartesian(xSpeed, ySpeed, 0.4*zRotation, m_gyro.getAngle());
+    	//motor_drive.driveCartesian(xSpeed, ySpeed, 0.4*zRotation, m_gyro.getAngle());
     	//System.out.println(m_gyro.getAngle());
     }
     
@@ -78,7 +78,7 @@ public class DriveTrainGyro extends PIDSubsystem {
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
 		System.out.println(output);
-		motor_drive.driveCartesian(0, 0, 5*output, m_gyro.getAngle());
+		//motor_drive.driveCartesian(0, 0, 5*output, m_gyro.getAngle());
 	}
 
 	public double getAngle() {

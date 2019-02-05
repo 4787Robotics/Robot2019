@@ -94,8 +94,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		m_driveTrain.drive(-OI.getRx(),OI.getRy(),OI.getRz());
-		
+		//m_driveTrain.drive(-OI.getRx(),OI.getRy(),OI.getRz());
+		m_driveTrain.drive(OI.getJoystick());
+
 		if(OI.buttonDown(1) && !isRunning) {
 			Thread fireThread = new Thread() {
 				public void run() {

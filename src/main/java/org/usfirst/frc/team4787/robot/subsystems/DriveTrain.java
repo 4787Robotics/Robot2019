@@ -2,10 +2,9 @@ package org.usfirst.frc.team4787.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
@@ -56,14 +55,12 @@ public class DriveTrain extends Subsystem {
     }*/
     
     public void drive(double left, double right) {
-      motor_drive.tankDrive(left, right)
+      motor_drive.tankDrive(left, right);
     }
 
     public void drive(Joystick joy) {
     	//fix to swap to lspeed and rspeed
-      this.drive(-joy.getY(), -joy.getThrottle());
+      motor_drive.arcadeDrive(-joy.getY(), 0.75*joy.getZ(), true);
     }
-    
-
 }
 

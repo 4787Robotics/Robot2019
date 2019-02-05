@@ -72,7 +72,7 @@ public class OI {
 		**/
 	}
 	
-	public Joystick getJoystick() {
+	public static Joystick getJoystick() {
 		return m_Joystick;
 	}
 	
@@ -88,7 +88,7 @@ public class OI {
 		return Math.pow(m_Joystick.getZ(), 1);
 	}
 	
-	public static boolean getPovWheel() {
+	public static int getPovWheel() {
 		return m_Joystick.getPOV();
 	}
 
