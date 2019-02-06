@@ -29,7 +29,7 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		//sets the pid values, might need feed forward
 		
-		
+		//TODO: Change to ESC Talon SRX once it is changed from Spark
 		front_left = new Spark(RobotMap.motor_front_left);
 		back_left = new Spark(RobotMap.motor_back_left);
 		front_right = new Spark(RobotMap.motor_front_right);

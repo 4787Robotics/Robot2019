@@ -29,8 +29,7 @@ public class RobotMap {
 	public static int motor_back_right = 1;
 	public static int motor_back_left = 0;
 	
-	//public static int motor_flywheel_right = 5;
-	//public static int motor_flywheel_left = 6;
+	public static int motor_flywheel = 6;
 	
 	public static int forklift_pin = 9;
 	

@@ -10,6 +10,7 @@ package org.usfirst.frc.team4787.robot;
 import org.usfirst.frc.team4787.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4787.robot.subsystems.DriveTrainGyro;
 import org.usfirst.frc.team4787.robot.subsystems.Forklift;
+import org.usfirst.frc.team4787.robot.subsystems.Flywheel;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
 	public static Forklift m_forklift;
 	public static OI m_OI;
 	public static boolean isRunning = false;
+	public static Flywheel m_flywheel;
   /**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
 		m_driveTrain = new DriveTrain();
 		m_forklift = new Forklift();
 		m_OI = new OI();
+		m_flywheel = new Flywheel();
 		//m_Cannon = new Cannon();
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
