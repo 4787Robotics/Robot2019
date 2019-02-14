@@ -12,6 +12,7 @@ import org.usfirst.frc.team4787.robot.subsystems.DriveTrainGyro;
 import org.usfirst.frc.team4787.robot.subsystems.Forklift;
 import org.usfirst.frc.team4787.robot.subsystems.Flywheel;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -44,6 +45,9 @@ public class Robot extends TimedRobot {
 		m_forklift = new Forklift();
 		m_OI = new OI();
 		m_flywheel = new Flywheel();
+		
+		CameraServer.getInstance().startAutomaticCapture();
+		
 		//m_Cannon = new Cannon();
 		m_chooser.addDefault("Default Auto", kDefaultAuto);
 		m_chooser.addObject("My Auto", kCustomAuto);
