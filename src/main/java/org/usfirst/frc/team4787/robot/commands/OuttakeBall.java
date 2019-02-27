@@ -1,19 +1,18 @@
 package org.usfirst.frc.team4787.robot.commands;
 
-import org.usfirst.frc.team4787.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4787.robot.Robot;
 
 /**
  *
  */
-public class ForkliftWithJoystick extends Command {
+public class OuttakeBall extends Command {
 
-    public ForkliftWithJoystick() {
+    public OuttakeBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.m_forklift);
+    	requires(Robot.m_flywheel);
     }
 
     // Called just before this Command runs the first time
@@ -22,15 +21,7 @@ public class ForkliftWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (Robot.m_OI.getPovWheel() == 0) {
-            Robot.m_forklift.setSpeed(1.0);
-        }
-        else if(Robot.m_OI.getPovWheel() == -1) {
-            Robot.m_forklift.setSpeed(0);
-        }
-        else if (Robot.m_OI.getPovWheel() == 5){
-            Robot.m_forklift.setSpeed(-1.0);
-        }
+    	Robot.m_flywheel.setSpeed(-1.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -40,7 +31,7 @@ public class ForkliftWithJoystick extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.m_forklift.setSpeed(0);
+    	Robot.m_flywheel.setSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same

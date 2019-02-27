@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team4787.robot;
 
+import org.usfirst.frc.team4787.robot.commands.ForkliftWithJoystick;
+import org.usfirst.frc.team4787.robot.subsystems.ArmMagnet;
 import org.usfirst.frc.team4787.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4787.robot.subsystems.DriveTrainGyro;
 import org.usfirst.frc.team4787.robot.subsystems.Forklift;
@@ -35,7 +37,12 @@ public class Robot extends TimedRobot {
 	public static OI m_OI;
 	public static boolean isRunning = false;
 	public static Flywheel m_flywheel;
-  /**
+	public static ForkliftWithJoystick m_forkcontrol;
+	public static ArmMagnet m_armhatch;
+	public static ArmMagnet m_armflywheel;
+	public static ArmMagnet m_armball;
+	
+	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
@@ -46,6 +53,15 @@ public class Robot extends TimedRobot {
 		m_OI = new OI();
 		m_flywheel = new Flywheel();
 		
+		m_armhatch = new ArmMagnet(RobotMap.arm_magnet_hatch);
+		m_armflywheel = new ArmMagnet(RobotMap.arm_magnet_flywheel);
+		m_armball = new ArmMagnet(RobotMap.arm_magnet_ball);
+
+		m_forkcontrol = new ForkliftWithJoystick();
+		//runs execute method indefinitely
+		m_forkcontrol.start();
+
+
 		CameraServer.getInstance().startAutomaticCapture();
 		
 		//m_Cannon = new Cannon();
